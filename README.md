@@ -1,9 +1,8 @@
 New readme
 More tutorials
 Word here
-<<<<<<< HEAD
 More to do
-=======
-just some more texting to get the hang of things,
-going to be creating an issue with this so it is no big deal with how much i type as it will all be useful for my typing skills and vs code practice
->>>>>>> 48991b6aa7afb49d5cc0b17b94079f5cf0e0d3c4
+More to add
+issue here, i will now just type until i think enough time has passed because i desperately need more practice, i will continue to type more.
+I need to get used to typing so that one day i can reach 100 wpm.
+I have a lot to study. ccna comes first, then linux, then other. typing can be done during all of the rest, i have not looked down at my screen other than to check the number 0
