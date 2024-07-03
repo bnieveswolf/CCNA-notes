@@ -4,3 +4,10 @@ IPv4 Header
     Fields of the IPv4 Header
     Last thing to update before final merge
     
+Routing- the process routers use to determine the path that ip packets should take over a network to reach their destination.
+Types of routing:
+    Dynamic- using protocols such as OSPF to share routing info with each other automatically and build their routing table
+    Static- a network engineer manually configures routes on the router
+
+VTP- vlan trunking protocol
+DTP- dynamic trunking protocol
