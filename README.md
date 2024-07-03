@@ -1,3 +1,5 @@
 New readme
 More tutorials
-Word here
+Words here
+just seeing how this works :)
+git 
