@@ -34,4 +34,8 @@ Send frame and continue sending once MAC address is found, repeating until it re
 
 Vlans
     LAN- a group of devices in a single location/ broadcast domain, all devices will receive a broadcast frame (FFFF.FFFF.FFFF)
-    
+    Vlans logically separate end hosts at layer 2
+    Switches do not forward traffic between vlans, they must be sent through a router
+    vlans 1, 1002-1005 exit by default and cannot be deleted
+    An access port is a switch port which belongs to a single vlan, and usually connects to end hosts like PCs.
+    Switchports which carry multiple vlans are called trunk ports.
