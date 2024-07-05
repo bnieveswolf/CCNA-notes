@@ -11,3 +11,27 @@ Types of routing:
 
 VTP- vlan trunking protocol
 DTP- dynamic trunking protocol
+
+Life of a packet
+ Every device has its own mac address
+ ffff.ffff.ffff is broadcast mac address
+ pc1 > pc4 
+    pc1 mac 1111 ip 192.168.1.1/24
+    pc4 mac 4444 ip 192.168.4.1/24
+    router 1 mac aaaa 
+             mac bbbb
+    router 2 mac cccc
+             mac dddd
+    router 4 mac eeee
+             mac fffe (all F is broadcast)
+router 1 is default gateway
+ARP request to get to default gateway (bridge between user and internet or other networks)
+    src ip 192.168.1.1
+    dst ip 192.168.1.254
+    dst mac ffff.ffff.ffff
+    src mac 1111
+Send frame and continue sending once MAC address is found, repeating until it reaches pc4
+
+Vlans
+    LAN- a group of devices in a single location/ broadcast domain, all devices will receive a broadcast frame (FFFF.FFFF.FFFF)
+    
