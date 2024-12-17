@@ -1,0 +1,1 @@
+loopback interfaces- virtual interfaces, always up/up, not dependant on a physical interface, provides a consistant IP address that can be used to reach/identify the router

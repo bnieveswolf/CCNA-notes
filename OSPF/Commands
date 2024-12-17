@@ -1,0 +1,6 @@
+show ip ospf database
+    to view link state database (LSDB)
+show ip ospf neighbor
+    show ospf neighbors
+show ip ospf interfaces
+    details on current ospf settings

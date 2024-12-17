@@ -1,0 +1,31 @@
+once all ip are set up on router:
+On router 4
+en
+conf t
+int l0 (this is creating a loopback int)
+ip add 4.4.4.4 255.255.255.255 (this is a loopback of 4.4.4.4/32)
+do show int l0 (shows netmask of int)
+router ospf 1
+network 0.0.0.0 255.255.255.255 area 0 (configures all interfaces with ospf to area 0, a wildcard subnet mask is used so this equals 0.0.0.0 0.0.0.0)
+pass g0/0 (passive interface)
+pass l0 (interfaces connected to end hosts where they dont need to recieve hello messages)
+
+On router 3
+same steps as previous until opsf configuration on interfaces with different loopback
+network 10.0.13.2 0.0.0.0 area 0 (settign each interface individually)
+network 10.0.34.1 0.0.0.0 area 0 
+
+On router 2
+same steps as previous until opsf configuration on interfaces with different loopback
+net 10.0.0.0 0.0.255.255 area 0
+net 2.2.2.2 0.0.0.0 area 0
+
+On router 1
+same steps as previous until opsf configuration on interfaces with different loopback
+network 10.0.12.0 0.0.0.3 area 0   
+network 10.0.13.0 0.0.0.3 area 0
+passive int l0
+default-information originate (make routers send to here to reach internet)
+exit
+ip route 0.0.0.0 0.0.0.0 203.0.113.2 (settign next hop to internet)
+show ip protocols

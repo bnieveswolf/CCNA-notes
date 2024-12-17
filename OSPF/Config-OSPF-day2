@@ -1,0 +1,9 @@
+once ips are setup:
+int range g0/0, f1/0, l0
+ip ospf 1 area 0
+do show ip protocols
+router ospf 1
+passive-interface l0
+
+to chnage the cost:
+auto-cost reference-bandwidth 10000 (to make the reference 100 for fast ethernet, 10000/100)
