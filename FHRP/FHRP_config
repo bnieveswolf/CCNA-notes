@@ -1,0 +1,6 @@
+R1(config)#interface g0/0
+R1(config-if)#standby (version 2) (group number, 0-255 for v1, 0-4095 for v2) ip (ip address of default gateway)
+             #standby 1 ip 172.16.0.254
+             #standby 1 priority (priority value)
+             #standby 1 priority 200
+             #standby 1 preempt

@@ -1,1 +1,10 @@
 loopback interfaces- virtual interfaces, always up/up, not dependant on a physical interface, provides a consistant IP address that can be used to reach/identify the router
+OSPF Neighbor requirements:
+1. Area number must match
+2. Interfaces must be in the same subnet
+3. OSPF process must not be shutdown
+4. OSPF router IDs must be unique
+5. Hello and Dead timers must match
+6. Authentication settings must match
+7. IP MTU settings must match
+8. OSPF network type must match

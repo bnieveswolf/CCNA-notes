@@ -1,0 +1,58 @@
+Layer 4
+TCP (Transmission Control Protocol)
+UDP (user Datagram Protocol)
+
+Layer 4:
+    Provides transparent transfer of data between end hosts.
+    Provides (or doesnt provide) various services to applications:
+        Reliable data transfer
+        error recovery
+        data sequencing
+        flow control
+    Provides layer 4 addressing (port numbers)
+        identify the application layer Protocol
+        provides session multiplexing
+
+whats is a session:
+    an exchange of data between two or more communucating devices.
+Destination port:
+    identifies the application layer protocol (ex. tcp 80 = HTTP)
+Source port:
+    randomly selected by PC1, helps identify the session
+Well-known port numbers: 0-1023
+Registered port numbers: 1024-49151
+Ephemeral/private/dynamic port numbers: 49152-65535
+
+TCP:
+    is connecteion oriented:
+        before actually sending data to the destination host, the two hosts communicate to establish a connection. Once the connection is established, the data exchange begins.
+    provides reliable communication:
+        the host must acknowledge that it reseived each tcp segnment
+        if the segment is not acknowledged, it is sent again.
+    provides sequencing:
+        sequence numbers in the header allow destination hosts to put segments in the correct order even if they arrive out of order
+    provides flow control:
+        the destination host can tell the source host to increase/decrease the rate that data is sent
+
+TCP Three-Way Handshake:
+    1. PC1 will send a TCP segment to SRV1 with a SYN (syncronization) flag set, meaning that bit is set to one
+    2. SRV1 will reply by sending a TCP segment with a SYN and ACK flag set. Both bits are now set to 1.
+    3. PC1 will send a TCP segment with the ACK bit set.
+    Now the three-way handshake is complete and the connection is established. 
+
+TCP Four-Way Handshake:
+    1. PC1 send s a TCP segment to SRV1 with the FIN flag set.
+    2. SRV1 responds with an ACK.
+    3. SRV1 then sends its own FIN.
+    4. PC1 sends an ACK in reponse to SRV1 FIN. 
+    The connection is now terminated.
+
+UPD:
+    is not connection-oriented:
+        the sending host does not establish a connection before sending
+    does not provide reliable communication
+        acknowledgements are not used when sending with udp. 
+    does not provide sequencing
+        there is no sequence number field in the udp header. 
+    does not provide flow control
+

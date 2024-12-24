@@ -1,0 +1,43 @@
+Things to cover:
+    The purpose of FHRPs
+    HSRP (Hot standby router protocol)
+    VRRP (Virtual Router redundancy protocol)
+    GLBP (Gateway Load Balancing Protocol)
+    Basics of HSRP
+
+FHRP:
+    A first hop redundancy protocol is a computer networking protocol which is designed to protect the default gateway used on a subnetwork by allowing two or more routers to provide backup for that address, in the event of failure of an active router, the backup router will take over the address usually within a few seconds.
+
+How they do this:
+    2 routers share vip (virtual IP) address EX. 172.16.0.252
+    You config PCs to use that as their defafault gateway instead of the actual routers IP Ex. 172.16.0.254 & 172.16.0.253
+    They send multicast Hello messages to negotiate roles between each router, Standby or Active router
+    The switches send Gratuitous Arp replies to get the traffic to the Avtive default gateway if one fails. Gratuitous ARP replies are sent without being requested.
+
+HSRP (Hot Standby Router Protocol):
+    Cisco proprietary
+    An active and standby router are selected
+    2 versions, 1 and 2. Version 2 adds IPv6 support
+    multicast IPv4 addresses: v1 = 224.0.0.2
+                              v2 = 224.0.0.102
+    virtual MAC addresses: v1 = 0000.0c07.acXX (XX = HSRP group number)
+                           v2 = 0000.0c9f.fXXX (XXX = HSRP group number)
+    
+VRRP (Virtual Router Redundancy Protocol):
+    Open standard
+    A master and backup router are elected 
+    Multicast IPv4 address: 224.0.0.18
+    Virtual MAC address: 0000.5e00.01XX (XX = VRRP group number)
+
+GLBP (Gateway Load Balancing Protocol):
+    Cisco proprietary  
+    Load balances among multiple routers within a single subnet
+    An AVG (Active Virtual Gateway) is elected
+    Up to 4 AVFs (Active Virtual Forwarders) are assigned by the AVG (the ABG itself can be and AVF, too)
+    Each AVF acts as the default gateway for a portion of the hosts in the subnet  
+    Multicast IPv4 address: 224.0.0.1.2
+    Virtual MAC address: 0007.b400.XXYY (XX = GLBP group number, YY = AVF number)
+
+The active router is determined in this order:
+    1- Highest priority (default 100)
+    2- Highest IP address
