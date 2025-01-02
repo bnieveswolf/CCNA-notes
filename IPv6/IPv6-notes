@@ -1,0 +1,38 @@
+how to convert MAC address to EUI (Extended Unique Identifier)
+    1. Divide the MAC address n half:
+        1234 5678 90AB -> 1234 56 | 78 90AB
+    2. Insert FFFE in the middle:
+        1234 56FF FE78 90AB
+    3. Invert the 7th bit, if a 1 then turn to 0, if 0 then turn to 1. Each number is 4 bits:
+        1(2)34 56FF FE78 90AB -> 2 = 0010 -> invert 7th bit = 0000 -> 1034 56FF FE78 90AB
+
+Configure IPv6 
+    R1(config)#int g0/0
+    R1(config-if)#ipv6 address 2001:db8::/64 eui-64
+    R1(config-if)#no shut
+    R1(config-if)#
+    R1(config-if)#int g0/1
+    R1(config-if)#ipv6 address 2001:db8:0:1::/64 eui-64
+    R1(config-if)#no shut
+    R1(config-if)#
+    R1(config-if)#int g0/2
+    R1(config-if)#ipv6 address 2001:db8:0:2::/64 eui-64
+    R1(config-if)#no shut
+
+How an IPv6 address is split up:
+2001:0DB8:8B00:0001:0000:0000:0000:0001/64
+
+[2001:DB8:8B00]
+    48-bit global routing prefix assigned by the ISP
+
+[0001]
+    16-bit subnet identifier used by the enterprise to make various subnets
+
+[0000:0000:0000:0001]
+    64-bitinterface identifier, the host portion of the address
+
+Unicast- one source to one destination.
+Broadcats- one source to all destinations.
+Multicast- one source to multiple destinations.
+IPv6 uses multicast with FF00::/8 (FF00 to FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF)
+IPv6 does not use broadcast like IPv4.

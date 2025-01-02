@@ -1,0 +1,57 @@
+What are ACLs?
+ACL Logic
+ACL types
+Standard numbered ACLs
+Standard named ACls
+
+ACLs (Access Control Lists):
+    Have multiple uses.
+    ACLs function as a packet filter, instructing the router to permit or discard specific traffic.
+    ACLs can filter traffic based on source/destination IP addresses, source/destination Layer 4 ports, etc.
+    ACLs are configures globally on the router in global conmfig mode.
+    They are made up of an ordered sequence of ACEs (access Control Entries)
+
+Example:
+
+• REQUIREMENT:
+Hosts in 192.168.1.0/24 can access the 10.0.1.0/24 network 
+Hosts in 192.168.2.0/24 cannot access the 10.0.1.0/24 network
+
+ACL 1:
+    1: if source IP = 192.168.1.0/24,
+    then permit
+    2: if source IP = 192.168.2.0/24,then deny
+    3: if source IP = any, then permit
+
+In order for ACLs to take effect, they must first be created, then applied to an interface.
+They are aplied either inbound or outbound.
+
+Implicit deny- if a packet doesnt match any entry in an ACL, then it is automatically denied. 
+
+2 Types of ACLs:
+Standard ACLs: Match based on Source IP address only.
+    Standard Numbered ACLs
+    Standard Named ACLs
+Extended ACLs: Match based on Source/Destination IP, Source/Destination port, etc.
+    Extended Numbered ACLs
+    Extended Named ACLs
+
+Command for standard numbered ACLs:
+R1(config)#access-list number {deny|permit} ip wildcard-mask
+
+Commands for standard ACL:
+Deny:
+    R1(config)#access-list 1 deny 1.1.1.1 0.0.0.0
+    R1(config)#access-list 1 deny 1.1.1.1
+    R1(config)#access-list 1 deny host 1.1.1.1
+
+Permit:
+    R1(config)#access-list 1 permit any
+    R1(config)#access-list 1 permit 0.0.0.0 255.255.255.255
+
+Description:
+    R1(config)#access-list 1 remark ## BLOCK BOB FROM ACCOUNTING ##
+    R1(config)#do show access-lists
+
+Apply to an Interface:
+    R1(config-if)ip access-group number {in|out}
