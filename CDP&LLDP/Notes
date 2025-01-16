@@ -1,0 +1,33 @@
+CDP - Cisco Discovery protocol
+LLDP - Link Layer Discover protocol
+
+R1#show cdp neighbors 
+    to view 
+
+R1# show cdp
+→ shows basic information about CDP (timers, version)
+• R1# show cdp traffic
+→ displays how many CDP messages have been sent and received
+• R1# show cdp interface
+→ displays which interfaces CDP is enabled on
+• R1# show cdp neighbors
+→ lists CDP neighbors and some basic information about each neighbor
+• R1# show cdp neighbors detail
+→ lists each CDP neighbor with more detailed information
+• R1# show cdp entry name
+→ displays the same info as above, but for the specified neighbor only
+
+
+
+• LLDP is usually globally disabled by default.
+• LLDP is also disabled on each interface by default.
+
+• To enable LLDP globally: R1 (config)# 11dp run
+• To enable LLDP on specific interfaces (tx): R1(config-if)# Ildp transmit
+• To enable LLDP on specific a interface (x): R1(config-if)# Ildp receive
+• Configure the LLDP timer:
+R1(config)# Ildp timer seconds
+• Configure the LLDP holdtime:
+• Configure the LLDP reinit timer:
+R1 (config)# 11dp holdtime seconds
+R1 (config)# 11dp reinit seconds

@@ -1,0 +1,17 @@
+FTP - File Transfer Protocol
+TFTP - Trivial File Transfer Protocol
+They are industy standard protocols used to transfer files over a netwwork.
+
+They both use a client-server model.
+→ Clients can use FTP or TFTP to copy files from a server.
+→ Clients can use FTP or TFTP to copy files to a server.
+As a network engineer, the most common use for FTP/TFP is in the process of upgrading the operating system of a network device.
+You can use FTP/TFTP to download the newer version of IOS from a server, and then reboot the device with the new lOS image.
+
+TFTP:
+Was released after FTP, but is not a replacement for FTP
+It is another tool to use when lightweight simplicity is more important than functionality.
+No authentication (username/PW), so servers will respond to all TFTP requests.
+No encryption, so all data is sent in plain text.
+Best used in a controlled environment to transfer small files quickly.
+TFTP servers listen on UDP port 69.

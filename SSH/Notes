@@ -1,0 +1,19 @@
+Console port security  
+Layer 2 switch management IP
+Telnet
+SSH
+
+SW1# show version
+SW1# show ip ssh
+SW1 (config)# ip default-gateway ip-address
+SW1 (config)# line con 0
+SW1 (config)# line vty 0 15
+SW1 (config)# crypto key generate rsa
+SW1 (config)# ip ssh version 2
+SW1(config-line)# login [local]
+SW1 (config-line)# transport input [protocols | all | none]
+SW1 (config-line)# exec-timeout minutes seconds
+SW1 (config-line)# access-class acl in
+
+Telnet uses port 23
+SSH uses port 22 

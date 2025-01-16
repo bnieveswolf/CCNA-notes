@@ -1,0 +1,19 @@
+!configure logging to the console line
+R1 (config)#logging console 6
+
+!configure logging to the vty lines
+R1 (config)#logging monitor informational
+
+!configure logging to the buffer
+R1 (config)#logging buffered 8192 6
+
+!configure logging to an external server
+R1 (config)#logging 192.168.1.100
+
+R1 (config)#logging host 192.168.1.100
+
+R1 (config)#logging trap debugging
+
+To have yout line be reprinted instead of having a log interrupt the message use:
+R1(config)#line console 0
+R1(config-line)#logging synchronous

@@ -1,0 +1,34 @@
+DHCP - Dynamic Host Configuration Protocol - used to allow hosts to automatically/dynamically learn various aspects of their network configuration such as IP addresses, subnet masks, default gateway, DNS server, etc. without manual configuration. 
+This is usually used on client devices such as workstations (PCs), phones, etc.
+Devices such as routers, servers, etc are usually manually configured.
+In small networks, the router usually acts as the DHCP server for hosts in the LAN.
+For larger networks they use Linux/Windows servers
+
+Port 67: Used by DHCP servers to listen for incoming messages from DHCP clients
+Port 68: Used by DHCP clients to send messages to DHCP servers
+
+
+To release and ip address use:
+ipconfig /release
+1. DHCP Release message is sent saying it doesnt need the address anymore.
+
+To get an IP address use:
+ipconfig /renew
+1. DHCP Discover message asks if there are any DHCP servers in the local network, telling them it needs an IP address
+2. DHCP Offer is sent as a unicast frame to the clients MAC address. 
+3. DHCP Request message is sent to the sever saying that it wants to use the IP address offered. It is sent as broadcast.
+4. DHCP Ack is sent to the client confirming that the client may use the requested IP address. Once this message is recieved, the client finally configures the IP address on its network interface. 
+
+How to enable DHCP on router: 
+
+R1 (config)#ip dhcp excluded-address 192.168.1.1 192. 168.1.10
+R1 (config)#ip dhcp pool LAB_POOL 
+R1 (dhcp-config)#network 192.168.1.0 ?
+    /nn or A.B.C.D Network mask or prefix length
+    ‹Cr›
+R1 (dhcp-config) #network 192.168.1.0 /24
+R1 (dhcp- config)#dns-server 8.8.8.8
+R1 (dhcp-config)#domain-name jeremysitlab.com
+R1 (dhcp- config)#default-router 192.168.1.1
+R1 (dhcp- config)#lease 0 5 30
+

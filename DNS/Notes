@@ -1,0 +1,12 @@
+DNS - domain name system - used to resolve human-readable names (google.com) to ip addresses.
+Machines such as PCs dont use names, they use ip addresses.
+
+C:\Users\user>ipconfig /all
+
+R1(config)#ip dns server
+R1 (config)#ip host R1 192.168.0.1
+R1 (config)#ip host PC1 192.168.0.101
+R1 (config)#ip host PC2 192.168.0.102
+R1 (config)#ip host PC3 192.168.0.103
+R1 (config)#ip name-server 8.8.8.8
+R1 (config)#ip domain lookup
